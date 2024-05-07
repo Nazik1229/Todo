@@ -9,7 +9,7 @@ const [arr,setArr] = useState([
       title:"Talk 2 me"
     },
     {
-      id:2,
+      id:2, 
       title:"Escape"
     },
     {
@@ -31,6 +31,15 @@ const idDelete = (idToDelete) => {
     setArr(deleteArr);
 };
 
+const toggleCheckbox = (id) => {
+  setArr(arr.map(item => {
+    if (item.id === id) {
+      return { ...item, checked: !item.checked, completed: !item.completed};
+    }
+    return item;
+  }));
+};
+
   return (
     <div className="form">
       <h1>
@@ -41,18 +50,24 @@ const idDelete = (idToDelete) => {
         <button onClick={addItem}>Add</button>
       </div>
       <ul>
-        {
-          arr.map(item => (
-            <li>
-              {item.title}
-              <button onClick={() => idDelete(item.id)}>
-                delete
-              </button>
-            </li>
-          )) 
-        }
-      </ul>
-      
+        {arr.map(item => (
+          <li key={item.id} className={item.checked ? "completed" : ""}>
+            <input className='checkbox'
+              type="checkbox"
+              checked={item.checked}
+              onChange={() => toggleCheckbox(item.id)}
+            />
+            <button className={item.completed ? "isComplete complete" : "isComplete uncomplete"}
+              onClick={() => toggleCheckbox(item.id)}>
+              {item.completed ? "Completed" : "Uncomplete"}
+            </button>
+            <span style={{ textDecoration: item.completed ? "line-through" : "none" }}>{item.title}</span>
+            {!item.completed && (
+              <button onClick={() => idDelete(item.id)}>delete</button>
+            )}
+          </li>
+        ))}
+      </ul> 
     </div>
   );
 }

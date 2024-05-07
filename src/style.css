@@ -65,9 +65,11 @@ button:hover {
 }
   
 li {
+    display: flex;
     margin-bottom: 10px;
     color: #fff;
     position: relative;
+    align-items: center;
 }
   
 li button {
@@ -85,3 +87,27 @@ li button:hover {
     background-color: #c82333;
 }
   
+li span {
+    text-decoration: none; 
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+.isComplete {
+    margin-right: 60px;
+    background-color: #606B56;
+}
+
+.complete {
+    background-color: #dc3545;
+  }
+  
+.uncomplete {
+    background-color: #788968;
+}
+
+.checkbox {
+    margin-right: 10px;
+}
