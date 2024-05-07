@@ -16,7 +16,7 @@ const [arr,setArr] = useState([
       id:3,
       title:"Love you more than me"
     }
-  ])
+  ])                                          
 
 const [value,setValue] = useState("")
 const addItem = () => {
@@ -56,7 +56,7 @@ const toggleCheckbox = (id) => {
           <li key={item.id} className={item.checked ? "completed" : ""}>
             <input className='checkbox'
               type="checkbox"
-              checked={item.checked}
+              checked={item.checked}                                      
               onChange={() => toggleCheckbox(item.id)}
             />
             <button className={item.completed ? "isComplete complete" : "isComplete uncomplete"}
