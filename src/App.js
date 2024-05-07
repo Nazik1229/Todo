@@ -19,12 +19,14 @@ const [arr,setArr] = useState([
   ])
 
 const [value,setValue] = useState("")
-  const addItem = () => {
-    if(value.length > 5){
-      setArr([...arr,{id:arr[arr.length - 1].id + 1, title:value}])
-      setValue("")
-    }
+const addItem = () => {
+  if(value.length > 5){
+    setArr([...arr,{id:arr[arr.length - 1].id + 1, title:value}])
+    setValue("")
+  } else {
+    alert("Длина элемента должна быть не менее 6 символов.");
   }
+}
 
 const idDelete = (idToDelete) => {
     const deleteArr = arr.filter(item => item.id !== idToDelete);
